@@ -59,4 +59,14 @@ export interface CandlePoint {
   close: number
 }
 
+export interface WatchlistItem {
+  id: string
+  clerk_user_id: string
+  symbol: string
+  name: string
+  asset_type: 'stock' | 'forex'
+  added_at: string
+  current_price?: number
+}
+
 export type TimeRange = '1D' | '1W' | '1M' | '3M' | '1Y' | 'MAX'
