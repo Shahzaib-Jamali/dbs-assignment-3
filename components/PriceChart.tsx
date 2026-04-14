@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { createChart, ColorType, LineStyle } from 'lightweight-charts'
+import { createChart, ColorType, LineStyle, LineSeries } from 'lightweight-charts'
 import type { ChartPoint } from '@/lib/types'
 
 interface Props {
@@ -52,7 +52,7 @@ export default function PriceChart({ points, isUp }: Props) {
 
     const lineColor = isUp ? '#14b8a6' : '#f87171'
 
-    const lineSeries = chart.addLineSeries({
+    const lineSeries = chart.addSeries(LineSeries, {
       color: lineColor,
       lineWidth: 2,
       crosshairMarkerVisible: true,
