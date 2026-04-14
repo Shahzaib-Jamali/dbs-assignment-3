@@ -6,7 +6,13 @@
 
 **Architecture:** Next.js App Router with all Alpha Vantage calls made server-side in API routes. Clerk handles auth; the Clerk user ID (`clerk_user_id`) is the foreign key on every Supabase row. All DB writes go through API routes using the Supabase service role key (bypasses RLS; we enforce user scoping manually).
 
-**Tech Stack:** Next.js 14+ (App Router), TypeScript, Tailwind CSS, Clerk (`@clerk/nextjs`), Supabase (`@supabase/supabase-js`), Alpha Vantage REST API, Vercel
+**Tech Stack:** Next.js 16 (App Router), TypeScript, Tailwind CSS v4, Clerk (`@clerk/nextjs` v7), Supabase (`@supabase/supabase-js`), Alpha Vantage REST API, Vercel
+
+> **Next.js 16 critical notes:**
+> - Use `proxy.ts` (not `middleware.ts`) — export function named `proxy` (not `middleware`)
+> - All request-time APIs are async: `await auth()`, `await cookies()`, `await headers()`
+> - `params` and `searchParams` in pages are Promises — must be awaited
+> - Tailwind v4: use `@import "tailwindcss"` not `@tailwind base/components/utilities`
 
 ---
 
@@ -27,7 +33,7 @@ app/
     portfolio/route.ts                # GET — fetch or create user portfolio + holdings
     trade/route.ts                    # POST — execute BUY/SELL, update Supabase
     history/route.ts                  # GET — fetch user's trade log
-middleware.ts                         # Clerk middleware — protect /dashboard, /trade, /history
+proxy.ts                              # Clerk proxy — protect /dashboard, /trade, /history (Next.js 16: proxy.ts not middleware.ts)
 lib/
   supabase.ts                         # Supabase client (service role, server-only)
   alphaVantage.ts                     # AV fetch helpers: search, stockQuote, forexQuote
@@ -266,10 +272,10 @@ git commit -m "feat: add Supabase client and create database tables"
 
 ---
 
-## Task 4: Clerk Auth + Middleware
+## Task 4: Clerk Auth + Proxy
 
 **Files:**
-- Create: `middleware.ts`, `app/sign-in/[[...sign-in]]/page.tsx`, `app/sign-up/[[...sign-up]]/page.tsx`
+- Create: `proxy.ts` (NOT `middleware.ts` — Next.js 16 renamed this), `app/sign-in/[[...sign-in]]/page.tsx`, `app/sign-up/[[...sign-up]]/page.tsx`
 
 - [ ] **Step 1: Create Clerk app**
 
@@ -278,7 +284,7 @@ git commit -m "feat: add Supabase client and create database tables"
 3. Copy **Publishable Key** → `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` in `.env.local`
 4. Copy **Secret Key** → `CLERK_SECRET_KEY` in `.env.local`
 
-- [ ] **Step 2: Create `middleware.ts`**
+- [ ] **Step 2: Create `proxy.ts`** (Next.js 16: `middleware.ts` is deprecated, use `proxy.ts`)
 
 ```typescript
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
