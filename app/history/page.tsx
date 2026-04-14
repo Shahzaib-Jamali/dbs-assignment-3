@@ -23,7 +23,7 @@ export default async function HistoryPage() {
   }
 
   const trades = (data ?? []) as Trade[]
-  const totalVolume = trades.reduce((sum, t) => sum + Number(t.total_value), 0)
+  const totalVolume = trades.reduce((sum, t) => sum + Number(t.total), 0)
 
   return (
     <main className="mx-auto max-w-7xl px-6 py-10">
