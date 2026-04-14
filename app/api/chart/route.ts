@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@clerk/nextjs/server'
-import { getStockSeries, getForexSeries } from '@/lib/alphaVantage'
+import {
+  getStockSeries, getForexSeries,
+  getStockCandleSeries, getForexCandleSeries,
+} from '@/lib/alphaVantage'
 import { FOREX_PAIRS } from '@/lib/forex'
 import type { TimeRange } from '@/lib/types'
 
@@ -11,8 +14,9 @@ export async function GET(req: NextRequest) {
   if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   const symbol = req.nextUrl.searchParams.get('symbol') ?? ''
-  const type = req.nextUrl.searchParams.get('type') as 'stock' | 'forex' | null
-  const range = (req.nextUrl.searchParams.get('range') ?? '1D') as TimeRange
+  const type   = req.nextUrl.searchParams.get('type') as 'stock' | 'forex' | null
+  const range  = (req.nextUrl.searchParams.get('range') ?? '1D') as TimeRange
+  const mode   = req.nextUrl.searchParams.get('mode') ?? 'line'
 
   if (!symbol || !type) {
     return NextResponse.json({ error: 'symbol and type required' }, { status: 400 })
@@ -23,12 +27,16 @@ export async function GET(req: NextRequest) {
 
   try {
     if (type === 'stock') {
-      const points = await getStockSeries(symbol, range)
+      const points = mode === 'candle'
+        ? await getStockCandleSeries(symbol, range)
+        : await getStockSeries(symbol, range)
       return NextResponse.json({ points })
     } else {
       const pair = FOREX_PAIRS.find(p => p.symbol === symbol)
       if (!pair) return NextResponse.json({ error: 'Unknown forex pair' }, { status: 400 })
-      const points = await getForexSeries(pair.from, pair.to, range)
+      const points = mode === 'candle'
+        ? await getForexCandleSeries(pair.from, pair.to, range)
+        : await getForexSeries(pair.from, pair.to, range)
       return NextResponse.json({ points })
     }
   } catch {
