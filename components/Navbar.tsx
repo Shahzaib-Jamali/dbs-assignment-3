@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { SignedIn, SignedOut, UserButton, SignInButton, SignUpButton } from '@clerk/nextjs'
+import { Show, UserButton, SignInButton, SignUpButton } from '@clerk/nextjs'
 
 const navLinks = [
   { href: '/dashboard', label: 'Dashboard' },
@@ -22,7 +22,7 @@ export default function Navbar() {
         </Link>
 
         {/* Nav links — signed-in only */}
-        <SignedIn>
+        <Show when="signed-in">
           <div className="hidden items-center gap-6 md:flex">
             {navLinks.map(link => (
               <Link
@@ -38,11 +38,11 @@ export default function Navbar() {
               </Link>
             ))}
           </div>
-        </SignedIn>
+        </Show>
 
         {/* Right side */}
         <div className="flex items-center gap-3">
-          <SignedOut>
+          <Show when="signed-out">
             <SignInButton mode="redirect">
               <button className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors">
                 Log In
@@ -53,10 +53,10 @@ export default function Navbar() {
                 Sign Up
               </button>
             </SignUpButton>
-          </SignedOut>
-          <SignedIn>
+          </Show>
+          <Show when="signed-in">
             <UserButton afterSignOutUrl="/" />
-          </SignedIn>
+          </Show>
         </div>
       </div>
     </nav>

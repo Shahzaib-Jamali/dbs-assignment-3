@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { SignedIn, SignedOut } from '@clerk/nextjs'
+import { Show } from '@clerk/nextjs'
 
 const features = [
   {
@@ -37,7 +37,7 @@ export default function HomePage() {
             and track your portfolio — no money on the line.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <SignedOut>
+            <Show when="signed-out">
               <Link
                 href="/sign-up"
                 className="rounded-xl bg-teal-600 px-8 py-4 text-lg font-semibold text-white shadow-lg hover:bg-teal-700 transition-all hover:shadow-teal-200 hover:shadow-xl"
@@ -50,8 +50,8 @@ export default function HomePage() {
               >
                 Log In
               </Link>
-            </SignedOut>
-            <SignedIn>
+            </Show>
+            <Show when="signed-in">
               <Link
                 href="/dashboard"
                 className="rounded-xl bg-teal-600 px-8 py-4 text-lg font-semibold text-white shadow-lg hover:bg-teal-700 transition-all"
@@ -64,7 +64,7 @@ export default function HomePage() {
               >
                 Start Trading
               </Link>
-            </SignedIn>
+            </Show>
           </div>
         </div>
       </section>
@@ -102,22 +102,22 @@ export default function HomePage() {
           <p className="text-teal-100 mb-8 text-lg">
             Create a free account and get $50,000 in virtual cash instantly.
           </p>
-          <SignedOut>
+          <Show when="signed-out">
             <Link
               href="/sign-up"
               className="inline-block rounded-xl bg-white px-8 py-4 text-lg font-semibold text-teal-700 hover:bg-teal-50 transition-colors shadow-lg"
             >
               Create Free Account
             </Link>
-          </SignedOut>
-          <SignedIn>
+          </Show>
+          <Show when="signed-in">
             <Link
               href="/trade"
               className="inline-block rounded-xl bg-white px-8 py-4 text-lg font-semibold text-teal-700 hover:bg-teal-50 transition-colors shadow-lg"
             >
               Make Your First Trade
             </Link>
-          </SignedIn>
+          </Show>
         </div>
       </section>
     </main>
