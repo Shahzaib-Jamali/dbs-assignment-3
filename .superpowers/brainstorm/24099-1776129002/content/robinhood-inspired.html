@@ -1,0 +1,108 @@
+<h2>Robinhood-inspired layout for PaperTrade</h2>
+<p class="subtitle">Dark chart + form on the right — adapted to our teal design. Click to select.</p>
+
+<div class="cards">
+
+  <!-- Option A: Dark chart left, teal form right -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f8fafc;padding:12px;border-radius:8px 8px 0 0">
+      <!-- search bar -->
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:7px 12px;font-size:11px;color:#94a3b8;margin-bottom:8px">🔍 TSLA · Tesla Inc.</div>
+
+      <div style="display:flex;gap:8px">
+        <!-- LEFT: dark chart panel -->
+        <div style="flex:3;background:#111827;border-radius:8px;padding:12px">
+          <div style="color:#fff;font-size:20px;font-weight:700;line-height:1">$352.92</div>
+          <div style="color:#4ade80;font-size:10px;margin-top:2px">+$3.45 (+0.99%) Today</div>
+          <div style="color:#6b7280;font-size:10px">+$0.52 (+0.15%) Overnight</div>
+
+          <svg viewBox="0 0 200 80" style="width:100%;display:block;margin:8px 0">
+            <!-- reference dotted line -->
+            <line x1="0" y1="52" x2="200" y2="52" stroke="#374151" stroke-width="1" stroke-dasharray="3,3"/>
+            <!-- chart line — green since up -->
+            <polyline points="0,70 15,65 25,60 35,55 42,62 50,58 60,50 68,45 75,52 85,42 95,38 105,30 115,35 125,28 135,32 145,25 155,28 165,22 175,20 185,23 200,20"
+              fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linejoin="round"/>
+            <!-- hover crosshair -->
+            <line x1="165" y1="0" x2="165" y2="80" stroke="#4ade80" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.6"/>
+            <circle cx="165" cy="22" r="3" fill="#4ade80" stroke="#111827" stroke-width="1.5"/>
+          </svg>
+
+          <!-- time range tabs -->
+          <div style="display:flex;gap:4px">
+            <span style="font-size:9px;color:#4ade80;border-bottom:1.5px solid #4ade80;padding-bottom:1px">1D</span>
+            <span style="font-size:9px;color:#6b7280;padding-bottom:1px">1W</span>
+            <span style="font-size:9px;color:#6b7280;padding-bottom:1px">1M</span>
+            <span style="font-size:9px;color:#6b7280;padding-bottom:1px">3M</span>
+            <span style="font-size:9px;color:#6b7280;padding-bottom:1px">1Y</span>
+            <span style="font-size:9px;color:#6b7280;padding-bottom:1px">MAX</span>
+          </div>
+        </div>
+
+        <!-- RIGHT: buy/sell form, light -->
+        <div style="flex:2;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:10px">
+          <div style="font-size:11px;font-weight:700;color:#0f172a;margin-bottom:8px">Buy TSLA</div>
+          <div style="font-size:9px;color:#64748b;margin-bottom:2px">Shares</div>
+          <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:5px;padding:5px 8px;font-size:10px;color:#0f172a;margin-bottom:6px">10</div>
+          <div style="font-size:9px;color:#64748b;margin-bottom:2px">Est. cost</div>
+          <div style="font-size:10px;font-weight:600;color:#0f172a;margin-bottom:8px">$3,529.20</div>
+          <div style="background:#0d9488;border-radius:6px;padding:6px;text-align:center;font-size:10px;font-weight:600;color:#fff;margin-bottom:4px">Buy</div>
+          <div style="background:#fee2e2;border-radius:6px;padding:6px;text-align:center;font-size:10px;font-weight:600;color:#dc2626">Sell</div>
+          <div style="font-size:9px;color:#94a3b8;text-align:center;margin-top:6px">$48,230 available</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Dark chart + light form (Robinhood-inspired)</h3>
+      <p>Dark chart panel on the left with green line, dotted reference line, time range tabs. Buy/sell form stays in our teal light design on the right. Best of both worlds.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Full dark mode — chart + form both dark -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#111827;padding:12px;border-radius:8px 8px 0 0">
+      <!-- search bar -->
+      <div style="background:#1f2937;border:1px solid #374151;border-radius:8px;padding:7px 12px;font-size:11px;color:#6b7280;margin-bottom:8px">🔍 TSLA · Tesla Inc.</div>
+
+      <div style="display:flex;gap:8px">
+        <!-- LEFT: dark chart -->
+        <div style="flex:3">
+          <div style="color:#fff;font-size:20px;font-weight:700;line-height:1">$352.92</div>
+          <div style="color:#4ade80;font-size:10px;margin-top:2px;margin-bottom:8px">+$3.45 (+0.99%) Today</div>
+
+          <svg viewBox="0 0 200 75" style="width:100%;display:block;margin-bottom:8px">
+            <line x1="0" y1="50" x2="200" y2="50" stroke="#374151" stroke-width="1" stroke-dasharray="3,3"/>
+            <polyline points="0,68 15,63 25,58 35,53 42,60 50,56 60,48 68,43 75,50 85,40 95,36 105,28 115,33 125,26 135,30 145,23 155,26 165,20 175,18 185,21 200,18"
+              fill="none" stroke="#4ade80" stroke-width="1.5" stroke-linejoin="round"/>
+            <circle cx="165" cy="20" r="3" fill="#4ade80" stroke="#111827" stroke-width="1.5"/>
+          </svg>
+
+          <div style="display:flex;gap:5px">
+            <span style="font-size:9px;color:#4ade80;border-bottom:1.5px solid #4ade80;padding-bottom:1px">1D</span>
+            <span style="font-size:9px;color:#6b7280">1W</span>
+            <span style="font-size:9px;color:#6b7280">1M</span>
+            <span style="font-size:9px;color:#6b7280">3M</span>
+            <span style="font-size:9px;color:#6b7280">1Y</span>
+            <span style="font-size:9px;color:#6b7280">MAX</span>
+          </div>
+        </div>
+
+        <!-- RIGHT: dark form -->
+        <div style="flex:2;background:#1f2937;border:1px solid #374151;border-radius:8px;padding:10px">
+          <div style="font-size:11px;font-weight:700;color:#fff;margin-bottom:8px">Buy TSLA</div>
+          <div style="font-size:9px;color:#9ca3af;margin-bottom:2px">Shares</div>
+          <div style="background:#111827;border:1px solid #374151;border-radius:5px;padding:5px 8px;font-size:10px;color:#fff;margin-bottom:6px">10</div>
+          <div style="font-size:9px;color:#9ca3af;margin-bottom:2px">Est. cost</div>
+          <div style="font-size:10px;font-weight:600;color:#fff;margin-bottom:8px">$3,529.20</div>
+          <div style="background:#4ade80;border-radius:6px;padding:6px;text-align:center;font-size:10px;font-weight:700;color:#111827;margin-bottom:4px">Buy</div>
+          <div style="background:#374151;border:1px solid #ef4444;border-radius:6px;padding:6px;text-align:center;font-size:10px;font-weight:600;color:#ef4444">Sell</div>
+          <div style="font-size:9px;color:#6b7280;text-align:center;margin-top:6px">$48,230 available</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Full dark mode (exact Robinhood feel)</h3>
+      <p>Entire trade page goes dark — chart and form both on dark background. Green buy button, red outlined sell. Closest to actual Robinhood but changes the overall site feel.</p>
+    </div>
+  </div>
+
+</div>

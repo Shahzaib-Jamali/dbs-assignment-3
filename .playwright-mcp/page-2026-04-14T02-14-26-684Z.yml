@@ -1,0 +1,62 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "PaperTrade" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]: PaperTrade
+      - generic [ref=e8]:
+        - button "Log In" [ref=e9]
+        - button "Sign Up" [ref=e10]
+  - main [ref=e6]:
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - generic [ref=e15]:
+          - heading "Create your account" [level=1] [ref=e16]
+          - paragraph [ref=e17]: Welcome! Please fill in the details to get started.
+        - generic [ref=e18]:
+          - generic [ref=e20]:
+            - button "Sign in with Google Continue with Google" [disabled]:
+              - generic:
+                - generic:
+                  - generic "Sign in with Google"
+                - generic: Continue with Google
+          - paragraph [ref=e28]: or
+          - generic [ref=e30]:
+            - generic [ref=e31]:
+              - generic [ref=e34]:
+                - generic [ref=e35]:
+                  - generic: Email address
+                - textbox "Email address" [disabled]:
+                  - /placeholder: Enter your email address
+                  - text: diagtest@papertrade.dev
+              - generic [ref=e40]:
+                - generic [ref=e41]:
+                  - generic [ref=e42]:
+                    - generic: Password
+                  - generic [ref=e44]:
+                    - textbox "Password" [disabled]:
+                      - /placeholder: Create a password
+                      - text: TestPass123!
+                    - button "Show password" [ref=e46] [cursor=pointer]:
+                      - img [ref=e47]
+                - generic [ref=e50]: Your password meets all the necessary requirements.
+                - paragraph [ref=e74]:
+                  - img [ref=e75]
+                  - text: Your password meets all the necessary requirements.
+            - generic [ref=e52]:
+              - button "Loading" [disabled]:
+                - generic:
+                  - generic "Loading"
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e59]: Already have an account?
+          - link "Sign in" [ref=e60] [cursor=pointer]:
+            - /url: https://paper-trade-six-gamma.vercel.app/sign-in
+        - generic [ref=e62]:
+          - generic [ref=e64]:
+            - paragraph [ref=e65]: Secured by
+            - link "Clerk logo" [ref=e66] [cursor=pointer]:
+              - /url: https://go.clerk.com/components
+              - img [ref=e67]
+          - paragraph [ref=e72]: Development mode
+  - alert [ref=e7]

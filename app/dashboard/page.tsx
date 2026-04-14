@@ -6,6 +6,7 @@ import { FOREX_PAIRS } from '@/lib/forex'
 import StatCard from '@/components/StatCard'
 import HoldingsTable from '@/components/HoldingsTable'
 import Link from 'next/link'
+import ResetPortfolioButton from '@/components/ResetPortfolioButton'
 import type { Holding, Portfolio } from '@/lib/types'
 
 export default async function DashboardPage() {
@@ -78,6 +79,14 @@ export default async function DashboardPage() {
 
   return (
     <main className="mx-auto max-w-7xl px-6 py-10">
+      {totalValue < 1000 && (
+        <div className="mb-6 flex items-center justify-between rounded-xl bg-red-50 border border-red-200 px-5 py-4">
+          <p className="text-sm font-medium text-red-700">
+            ⚠️ Your portfolio is nearly empty ({formatUSD(totalValue)} remaining). Ready to start over?
+          </p>
+          <ResetPortfolioButton />
+        </div>
+      )}
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>

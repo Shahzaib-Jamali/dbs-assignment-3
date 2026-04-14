@@ -1,0 +1,37 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "PaperTrade" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e5]: PaperTrade
+  - main [ref=e6]:
+    - generic [ref=e8]:
+      - generic [ref=e9]: Paper Trading · Zero Risk
+      - heading "Trade stocks & forex without the risk" [level=1] [ref=e10]
+      - paragraph [ref=e11]: Practice investing with $50,000 in virtual cash. Search real assets, execute simulated trades, and track your portfolio — no money on the line.
+      - generic [ref=e12]:
+        - link "Start Trading Free" [ref=e13] [cursor=pointer]:
+          - /url: /sign-up
+        - link "Log In" [ref=e14] [cursor=pointer]:
+          - /url: /sign-in
+    - generic [ref=e16]:
+      - heading "Everything you need to practice" [level=2] [ref=e17]
+      - paragraph [ref=e18]: Build trading skills and test strategies with real market data — completely risk-free.
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e21]: 📈
+          - heading "Real Market Prices" [level=3] [ref=e22]
+          - paragraph [ref=e23]: Live stock and forex quotes powered by Alpha Vantage — no fake data.
+        - generic [ref=e24]:
+          - generic [ref=e25]: 💰
+          - heading "$50K Starting Balance" [level=3] [ref=e26]
+          - paragraph [ref=e27]: Every account starts with $50,000 in virtual cash to practice with.
+        - generic [ref=e28]:
+          - generic [ref=e29]: 📊
+          - heading "Track Your P&L" [level=3] [ref=e30]
+          - paragraph [ref=e31]: Monitor unrealized gains and losses across your full portfolio in real time.
+    - generic [ref=e33]:
+      - heading "Ready to start practicing?" [level=2] [ref=e34]
+      - paragraph [ref=e35]: Create a free account and get $50,000 in virtual cash instantly.
+      - link "Create Free Account" [ref=e36] [cursor=pointer]:
+        - /url: /sign-up
+  - alert [ref=e37]

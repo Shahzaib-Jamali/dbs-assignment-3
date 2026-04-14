@@ -1,0 +1,145 @@
+<h2>How should the chart fit into the trade page?</h2>
+<p class="subtitle">Same teal line chart — different placements relative to the buy/sell form.</p>
+
+<div class="cards">
+
+  <!-- Option A: Chart above form, full width -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f8fafc;padding:12px;border-radius:8px 8px 0 0">
+      <!-- search bar -->
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:8px 12px;font-size:11px;color:#94a3b8;margin-bottom:10px">🔍 AAPL · Apple Inc.</div>
+      <!-- chart full width -->
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:10px;margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+          <div>
+            <div style="font-size:18px;font-weight:700;color:#0f172a">$192.50</div>
+            <div style="font-size:11px;color:#16a34a">▲ +2.34 (1.23%) today</div>
+          </div>
+          <div style="display:flex;gap:4px">
+            <span style="font-size:9px;background:#f1f5f9;color:#64748b;padding:2px 6px;border-radius:4px">1D</span>
+            <span style="font-size:9px;background:#0d9488;color:#fff;padding:2px 6px;border-radius:4px">1W</span>
+            <span style="font-size:9px;background:#f1f5f9;color:#64748b;padding:2px 6px;border-radius:4px">1M</span>
+            <span style="font-size:9px;background:#f1f5f9;color:#64748b;padding:2px 6px;border-radius:4px">1Y</span>
+          </div>
+        </div>
+        <svg viewBox="0 0 280 60" style="width:100%;display:block">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0d9488" stop-opacity="0.15"/>
+              <stop offset="100%" stop-color="#0d9488" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,50 C30,45 60,40 90,35 C120,30 140,38 160,28 C180,18 210,12 240,8 C260,5 270,7 280,6 L280,60 L0,60 Z" fill="url(#g1)"/>
+          <path d="M0,50 C30,45 60,40 90,35 C120,30 140,38 160,28 C180,18 210,12 240,8 C260,5 270,7 280,6" fill="none" stroke="#0d9488" stroke-width="2"/>
+        </svg>
+      </div>
+      <!-- buy/sell form below -->
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:10px">
+        <div style="font-size:11px;font-weight:600;color:#0f172a;margin-bottom:6px">Buy / Sell</div>
+        <div style="background:#f1f5f9;border-radius:6px;height:16px;margin-bottom:5px"></div>
+        <div style="display:flex;gap:5px">
+          <div style="flex:1;background:#0d9488;border-radius:6px;height:20px"></div>
+          <div style="flex:1;background:#f1f5f9;border-radius:6px;height:20px"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Chart above form, stacked</h3>
+      <p>Chart takes the full width above the buy/sell panel. Clean and focused — see the price, then act.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Chart left, form right (side by side) -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f8fafc;padding:12px;border-radius:8px 8px 0 0">
+      <!-- search bar -->
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:8px 12px;font-size:11px;color:#94a3b8;margin-bottom:10px">🔍 AAPL · Apple Inc.</div>
+      <!-- side by side -->
+      <div style="display:flex;gap:8px">
+        <!-- chart left 60% -->
+        <div style="flex:3;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:8px">
+          <div style="font-size:15px;font-weight:700;color:#0f172a">$192.50</div>
+          <div style="font-size:10px;color:#16a34a;margin-bottom:6px">▲ +1.23% today</div>
+          <svg viewBox="0 0 160 60" style="width:100%;display:block">
+            <defs>
+              <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0d9488" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#0d9488" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0,50 C20,45 40,38 60,30 C80,22 100,18 120,12 C140,6 150,8 160,5 L160,60 L0,60 Z" fill="url(#g2)"/>
+            <path d="M0,50 C20,45 40,38 60,30 C80,22 100,18 120,12 C140,6 150,8 160,5" fill="none" stroke="#0d9488" stroke-width="2"/>
+          </svg>
+          <div style="display:flex;gap:3px;margin-top:5px">
+            <span style="font-size:8px;background:#f1f5f9;color:#64748b;padding:1px 5px;border-radius:3px">1D</span>
+            <span style="font-size:8px;background:#0d9488;color:#fff;padding:1px 5px;border-radius:3px">1W</span>
+            <span style="font-size:8px;background:#f1f5f9;color:#64748b;padding:1px 5px;border-radius:3px">1M</span>
+            <span style="font-size:8px;background:#f1f5f9;color:#64748b;padding:1px 5px;border-radius:3px">1Y</span>
+          </div>
+        </div>
+        <!-- form right 40% -->
+        <div style="flex:2;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:8px">
+          <div style="font-size:10px;font-weight:600;color:#0f172a;margin-bottom:5px">Buy / Sell</div>
+          <div style="background:#f1f5f9;border-radius:5px;height:14px;margin-bottom:4px"></div>
+          <div style="background:#f1f5f9;border-radius:5px;height:14px;margin-bottom:4px"></div>
+          <div style="background:#f1f5f9;border-radius:5px;height:14px;margin-bottom:6px"></div>
+          <div style="background:#0d9488;border-radius:5px;height:18px;margin-bottom:3px"></div>
+          <div style="background:#f1f5f9;border-radius:5px;height:18px"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Chart left, form right</h3>
+      <p>Two-column layout — chart on the left (60%), buy/sell form on the right (40%). See price and trade simultaneously. More like a real trading terminal.</p>
+    </div>
+  </div>
+
+  <!-- Option C: Chart inside form card, compact -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f8fafc;padding:12px;border-radius:8px 8px 0 0">
+      <!-- search bar -->
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:8px 12px;font-size:11px;color:#94a3b8;margin-bottom:10px">🔍 AAPL · Apple Inc.</div>
+      <!-- combined card -->
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden">
+        <!-- top: price + chart -->
+        <div style="padding:10px;border-bottom:1px solid #f1f5f9">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+            <div>
+              <div style="font-size:16px;font-weight:700;color:#0f172a">$192.50</div>
+              <div style="font-size:10px;color:#16a34a">▲ +2.34 (1.23%)</div>
+            </div>
+            <div style="display:flex;gap:3px">
+              <span style="font-size:8px;color:#64748b;padding:1px 5px;border-radius:3px;border:1px solid #e2e8f0">1D</span>
+              <span style="font-size:8px;color:#fff;background:#0d9488;padding:1px 5px;border-radius:3px">1W</span>
+              <span style="font-size:8px;color:#64748b;padding:1px 5px;border-radius:3px;border:1px solid #e2e8f0">1M</span>
+            </div>
+          </div>
+          <svg viewBox="0 0 260 45" style="width:100%;display:block">
+            <defs>
+              <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0d9488" stop-opacity="0.12"/>
+                <stop offset="100%" stop-color="#0d9488" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0,38 C30,34 60,30 90,26 C120,22 140,28 165,20 C190,12 215,8 240,5 C250,3 255,4 260,4 L260,45 L0,45 Z" fill="url(#g3)"/>
+            <path d="M0,38 C30,34 60,30 90,26 C120,22 140,28 165,20 C190,12 215,8 240,5 C250,3 255,4 260,4" fill="none" stroke="#0d9488" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <!-- bottom: buy/sell form -->
+        <div style="padding:10px">
+          <div style="font-size:10px;font-weight:600;color:#475569;margin-bottom:5px">Quantity</div>
+          <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:5px;height:14px;margin-bottom:6px"></div>
+          <div style="display:flex;gap:5px">
+            <div style="flex:1;background:#0d9488;border-radius:5px;height:18px"></div>
+            <div style="flex:1;background:#fee2e2;border-radius:5px;height:18px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Chart inside the trade card</h3>
+      <p>One unified card — price chart on top, buy/sell form below it. Compact and integrated. Chart feels like part of the trading action, not a separate section.</p>
+    </div>
+  </div>
+
+</div>

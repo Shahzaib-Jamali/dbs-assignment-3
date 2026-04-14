@@ -5,9 +5,10 @@ import { usePathname } from 'next/navigation'
 import { Show, UserButton, SignInButton, SignUpButton } from '@clerk/nextjs'
 
 const navLinks = [
-  { href: '/dashboard', label: 'Dashboard' },
-  { href: '/trade',     label: 'Trade' },
-  { href: '/history',  label: 'History' },
+  { href: '/dashboard',  label: 'Dashboard' },
+  { href: '/trade',      label: 'Trade' },
+  { href: '/watchlist',  label: 'Watchlist' },
+  { href: '/history',    label: 'History' },
 ]
 
 export default function Navbar() {

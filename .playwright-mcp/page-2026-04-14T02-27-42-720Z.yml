@@ -1,0 +1,16 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "PaperTrade" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e5]: PaperTrade
+  - main [ref=e6]:
+    - generic [ref=e7]:
+      - heading "Trade" [level=1] [ref=e8]
+      - paragraph [ref=e9]: Search for a stock or forex pair to buy or sell
+    - generic [ref=e11]:
+      - img [ref=e12]
+      - textbox "Search stocks or forex… (e.g. Apple, AAPL, EUR/USD)" [ref=e14]
+    - generic [ref=e15]:
+      - paragraph [ref=e16]: Search for an asset above to start trading
+      - paragraph [ref=e17]: Stocks (e.g. AAPL, TSLA) and forex pairs (e.g. EUR/USD)
+  - alert [ref=e18]

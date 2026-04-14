@@ -1,0 +1,31 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "PaperTrade" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e5]: PaperTrade
+  - main [ref=e6]:
+    - generic [ref=e8]:
+      - heading "Trade History" [level=1] [ref=e9]
+      - paragraph [ref=e10]: 1 trade · $518.40 total volume
+    - table [ref=e12]:
+      - rowgroup [ref=e13]:
+        - row "Date Symbol Type Action Qty Price Total" [ref=e14]:
+          - columnheader "Date" [ref=e15]
+          - columnheader "Symbol" [ref=e16]
+          - columnheader "Type" [ref=e17]
+          - columnheader "Action" [ref=e18]
+          - columnheader "Qty" [ref=e19]
+          - columnheader "Price" [ref=e20]
+          - columnheader "Total" [ref=e21]
+      - rowgroup [ref=e22]:
+        - row "Apr 14, 2026, 02:28 AM AAPL stock BUY 2.0000 $259.2000 $518.40" [ref=e23]:
+          - cell "Apr 14, 2026, 02:28 AM" [ref=e24]
+          - cell "AAPL" [ref=e25]
+          - cell "stock" [ref=e26]:
+            - generic [ref=e27]: stock
+          - cell "BUY" [ref=e28]:
+            - generic [ref=e29]: BUY
+          - cell "2.0000" [ref=e30]
+          - cell "$259.2000" [ref=e31]
+          - cell "$518.40" [ref=e32]
+  - alert [ref=e33]

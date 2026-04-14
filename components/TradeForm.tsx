@@ -39,7 +39,6 @@ export default function TradeForm({ selected, quote, userHolding, cashBalance, o
 
   return (
     <div className={dark ? 'p-6' : 'rounded-2xl border border-slate-100 bg-white p-6 shadow-sm'}>
-      {/* Asset info */}
       <div className="mb-5">
         <h3 className={`text-lg font-bold ${dark ? 'text-slate-100' : 'text-slate-900'}`}>{selected.symbol}</h3>
         <p className="text-sm text-slate-500">{selected.name}</p>
@@ -52,7 +51,6 @@ export default function TradeForm({ selected, quote, userHolding, cashBalance, o
         )}
       </div>
 
-      {/* Holding info */}
       {userHolding && userHolding.quantity > 0 && (
         <div className={`mb-4 rounded-lg px-4 py-3 text-sm ${dark ? 'bg-teal-900/30' : 'bg-teal-50'}`}>
           <span className={`font-medium ${dark ? 'text-teal-400' : 'text-teal-700'}`}>You hold:</span>{' '}
@@ -60,7 +58,6 @@ export default function TradeForm({ selected, quote, userHolding, cashBalance, o
         </div>
       )}
 
-      {/* Quantity input */}
       <div className="mb-4">
         <label className={`block text-sm font-medium mb-1 ${dark ? 'text-slate-400' : 'text-slate-700'}`}>Quantity</label>
         <input
@@ -78,10 +75,9 @@ export default function TradeForm({ selected, quote, userHolding, cashBalance, o
         />
       </div>
 
-      {/* Estimated cost */}
       {qty > 0 && price > 0 && (
         <div className={`mb-5 rounded-lg px-4 py-3 text-sm ${dark ? 'bg-slate-800' : 'bg-slate-50'}`}>
-          <span className="text-slate-500">Estimated {qty > 0 ? 'cost' : 'value'}:</span>{' '}
+          <span className="text-slate-500">Estimated cost:</span>{' '}
           <span className={`font-bold ${dark ? 'text-slate-100' : 'text-slate-900'}`}>
             ${estimatedCost.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </span>
@@ -92,7 +88,6 @@ export default function TradeForm({ selected, quote, userHolding, cashBalance, o
         <p className={`mb-4 rounded-lg px-4 py-3 text-sm font-medium ${dark ? 'bg-red-900/20 text-red-400' : 'bg-red-50 text-red-600'}`}>{error}</p>
       )}
 
-      {/* Buttons */}
       <div className="flex gap-3">
         <button
           disabled={!canBuy || loading}

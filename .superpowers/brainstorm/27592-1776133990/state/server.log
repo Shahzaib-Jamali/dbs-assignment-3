@@ -1,0 +1,6 @@
+{"type":"server-started","port":55056,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:55056","screen_dir":"/Users/shahzaibjamali/Desktop/DBS/Assignment 3/.superpowers/brainstorm/27592-1776133990/content","state_dir":"/Users/shahzaibjamali/Desktop/DBS/Assignment 3/.superpowers/brainstorm/27592-1776133990/state"}
+{"type":"screen-added","file":"/Users/shahzaibjamali/Desktop/DBS/Assignment 3/.superpowers/brainstorm/27592-1776133990/content/chart-type.html"}
+{"type":"screen-added","file":"/Users/shahzaibjamali/Desktop/DBS/Assignment 3/.superpowers/brainstorm/27592-1776133990/content/waiting-1.html"}
+{"type":"screen-added","file":"/Users/shahzaibjamali/Desktop/DBS/Assignment 3/.superpowers/brainstorm/27592-1776133990/content/watchlist-placement.html"}
+{"type":"screen-added","file":"/Users/shahzaibjamali/Desktop/DBS/Assignment 3/.superpowers/brainstorm/27592-1776133990/content/waiting-2.html"}
+{"type":"server-stopped","reason":"idle timeout"}

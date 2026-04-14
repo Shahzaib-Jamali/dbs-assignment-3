@@ -1,0 +1,346 @@
+- generic [ref=e2]:
+  - banner:
+    - generic [ref=e3]:
+      - link "WEBULL" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "WEBULL" [ref=e6]
+      - generic [ref=e7]:
+        - generic [ref=e9]:
+          - button "Sign up" [ref=e10] [cursor=pointer]:
+            - generic [ref=e12]: Sign up
+          - button "Log in" [ref=e13] [cursor=pointer]:
+            - generic [ref=e14]: Log in
+        - img [ref=e15] [cursor=pointer]
+  - generic [ref=e17]:
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - heading "Paper Trading" [level=1] [ref=e20]
+        - generic [ref=e21]: Practice and Perfect Your Trading Skills & Investment Strategies with ZERO Risk.
+        - generic [ref=e22] [cursor=pointer]:
+          - text: Click Here to Start Practicing
+          - img "arrow" [ref=e23]
+      - img "Paper Trading" [ref=e25]
+    - generic [ref=e26]:
+      - img "Webull’s Paper Trading is for You" [ref=e28]
+      - generic [ref=e29]:
+        - heading "Webull’s Paper Trading is for You" [level=2] [ref=e30]
+        - generic [ref=e31]:
+          - generic [ref=e32]:
+            - img "icon" [ref=e33]
+            - generic [ref=e34]: You have the capital to trade but are not sure where to begin.
+          - generic [ref=e35]:
+            - img "icon" [ref=e36]
+            - generic [ref=e37]: You want to use Webull’s Paper Trading feature to test new and experimental strategies.
+          - generic [ref=e38]:
+            - img "icon" [ref=e39]
+            - generic [ref=e40]: You want to try Webull’s Trading and Investing tools, but don't have enough funds yet.
+    - generic [ref=e42]:
+      - heading "Experience Webull’s Paper Trading Right Here! arrow" [level=2] [ref=e43]:
+        - text: Experience Webull’s Paper Trading Right Here!
+        - img "arrow" [ref=e44]
+      - generic [ref=e45]: Experience the excitement of real-time trading without any financial risk using Webull Paper Trading. Explore a wide range of products and strategies, refine your skills, and build the confidence needed to make informed financial decisions.
+      - generic [ref=e46]:
+        - heading "TurboTrader" [level=3] [ref=e47]
+        - heading "Classic" [level=3] [ref=e48] [cursor=pointer]
+      - generic [ref=e50]:
+        - generic [ref=e51]:
+          - generic [ref=e52]: Watchlist
+          - generic [ref=e53]:
+            - generic [ref=e54]: Name
+            - generic [ref=e55]: Price/Change
+          - generic [ref=e56] [cursor=pointer]:
+            - generic [ref=e57]:
+              - generic [ref=e58]:
+                - generic [ref=e59]: WEB WE
+                - generic [ref=e61]: Equity A
+              - generic [ref=e62]:
+                - generic [ref=e63]: "377.99"
+                - generic [ref=e64]: +1.13 0.30%
+            - generic [ref=e65]:
+              - generic [ref=e66]:
+                - generic [ref=e67]: WEB WE
+                - generic [ref=e69]: Equity B
+              - generic [ref=e70]:
+                - generic [ref=e71]: "450.35"
+                - generic [ref=e72]: "-0.66 -0.15%"
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - text: WEB WE
+            - generic [ref=e75]: 377.99 +1.13 0.30%
+          - generic [ref=e76]: 1m
+        - generic [ref=e83]:
+          - generic [ref=e84]:
+            - text: WEB WE
+            - generic [ref=e85]: 377.99 +1.13 0.30%
+          - generic [ref=e86]:
+            - generic [ref=e87]:
+              - generic [ref=e89] [cursor=pointer]:
+                - paragraph [ref=e90]: Buy 50 Equity A
+                - paragraph [ref=e91]: "@ MKT"
+              - generic [ref=e93] [cursor=pointer]:
+                - paragraph [ref=e94]: Buy 50 Equity A
+                - paragraph [ref=e95]: "@ BID"
+              - generic [ref=e97] [cursor=pointer]:
+                - paragraph [ref=e98]: Buy 50 Equity A
+                - paragraph [ref=e99]: "@ ASK"
+              - generic [ref=e101] [cursor=pointer]:
+                - paragraph [ref=e102]: Buy 50 Equity A
+                - paragraph [ref=e103]: "@ LAST"
+              - generic [ref=e105] [cursor=pointer]:
+                - paragraph [ref=e106]: Sell 50 Equity A
+                - paragraph [ref=e107]: "@ MKT"
+              - generic [ref=e109] [cursor=pointer]:
+                - paragraph [ref=e110]: Sell 50 Equity A
+                - paragraph [ref=e111]: "@ BID"
+              - generic [ref=e113] [cursor=pointer]:
+                - paragraph [ref=e114]: Sell 50 Equity A
+                - paragraph [ref=e115]: "@ ASK"
+              - generic [ref=e117] [cursor=pointer]:
+                - paragraph [ref=e118]: Sell 50 Equity A
+                - paragraph [ref=e119]: "@ LAST"
+            - generic [ref=e120]:
+              - generic [ref=e121] [cursor=pointer]:
+                - checkbox "Quantity Settings" [ref=e123]
+                - text: Quantity Settings
+              - generic [ref=e125]:
+                - textbox "Quantity Settings" [disabled] [ref=e128]: "50"
+                - img [ref=e130] [cursor=pointer]
+                - img [ref=e133] [cursor=pointer]
+                - img [ref=e136] [cursor=pointer]
+              - generic [ref=e138]:
+                - generic [ref=e139] [cursor=pointer]: "10"
+                - generic [ref=e140] [cursor=pointer]: "50"
+                - generic [ref=e141] [cursor=pointer]: "100"
+                - generic [ref=e142] [cursor=pointer]: "500"
+      - generic [ref=e143] [cursor=pointer]:
+        - text: Unlock More Web Trading Features
+        - img [ref=e144]
+    - generic [ref=e147]:
+      - generic [ref=e148]:
+        - generic [ref=e149]:
+          - img "Access to All Products" [ref=e150]
+          - heading "Access to All Products" [level=3] [ref=e151]
+          - generic [ref=e152]: Practice using a complete range of investing products, including stocks, ETFs, options, and futures.
+        - generic [ref=e153]:
+          - img "ZERO Risk" [ref=e154]
+          - heading "ZERO Risk" [level=3] [ref=e155]
+          - generic [ref=e156]: Use our FREE trading simulator to practice trading risk-free and commission-free.
+        - generic [ref=e157]:
+          - img "Unlimited Virtual Cash" [ref=e158]
+          - heading "Unlimited Virtual Cash" [level=3] [ref=e159]
+          - generic [ref=e160]: Trade as many paper trading dollars as you want.
+        - generic [ref=e161]:
+          - img "Real-Time Data" [ref=e162]
+          - heading "Real-Time Data" [level=3] [ref=e163]
+          - generic [ref=e164]: Access real-time quotes, explore integrated charts with indicators, and set up price alerts.
+        - generic [ref=e165]:
+          - img "Test New Strategies" [ref=e166]
+          - heading "Test New Strategies" [level=3] [ref=e167]
+          - generic [ref=e168]: Practice trading strategies to see what might work and what might not work.
+        - generic [ref=e169]:
+          - img "Indicator Studies" [ref=e170]
+          - heading "Indicator Studies" [level=3] [ref=e171]
+          - generic [ref=e172]: Over 60+ technical indicators and 17+ charting tools.
+      - generic [ref=e173] [cursor=pointer]:
+        - text: Click Here to Start Practicing
+        - img "arrow" [ref=e174]
+    - generic [ref=e175]:
+      - generic [ref=e176]:
+        - generic [ref=e177]:
+          - heading "It is Time!" [level=2] [ref=e178]
+          - generic [ref=e179]: Open your account to start testing your investment ideas and strategies or to practice trading stocks, ETFs, options, and futures in a live market simulation.
+        - img "It is time to practice trading stocks" [ref=e180]
+      - heading "Start Practicing with Paper Trading on All Webull Platforms" [level=2] [ref=e181]
+      - generic [ref=e182]:
+        - generic [ref=e183]:
+          - img "Experience the power of our innovative and customizable trading platform." [ref=e184]
+          - generic [ref=e185]: Experience the power of our innovative and customizable trading platform.
+          - generic [ref=e186] [cursor=pointer]: Download
+        - generic [ref=e187]:
+          - heading "Webull Mobile App" [level=3] [ref=e188]
+          - generic [ref=e189]: Stay on top of the markets and your accounts wherever you go.
+          - img "Webull Logo" [ref=e192]
+        - generic [ref=e193]:
+          - heading "Webull WebTrade" [level=3] [ref=e194]
+          - generic [ref=e195]: Research, execute, and manage your trades quickly and easily directly in your browser.
+          - generic [ref=e196] [cursor=pointer]: Click Here to Start
+    - generic [ref=e197]:
+      - heading "Sharpen Your Investment & Trading Skills Risk-Free" [level=2] [ref=e198]
+      - generic [ref=e199]: Webull’s Paper Trading can help all levels of traders to practice their trading skills and strategies. You can access it on all your devices. Open an account today to start practicing.
+      - generic [ref=e200] [cursor=pointer]:
+        - text: Click Here to Start Practicing
+        - img "arrow" [ref=e201]
+  - contentinfo [ref=e202]:
+    - generic [ref=e203]:
+      - generic [ref=e204]:
+        - generic [ref=e205]:
+          - heading "Webull Products" [level=3] [ref=e206] [cursor=pointer]
+          - link "Futures" [ref=e207] [cursor=pointer]:
+            - /url: https://www.webull.com/trading-investing/futures
+          - link "Options" [ref=e208] [cursor=pointer]:
+            - /url: https://www.webull.com/trading-investing/options
+          - link "Stocks & Fractional Shares" [ref=e209] [cursor=pointer]:
+            - /url: https://www.webull.com/trading-investing/stocks
+          - link "ETFs" [ref=e210] [cursor=pointer]:
+            - /url: https://www.webull.com/trading-investing/etfs
+          - link "Buy & Sell Crypto" [ref=e211] [cursor=pointer]:
+            - /url: https://www.webull.com/trading-investing/crypto
+          - link "Webull Advisors" [ref=e212] [cursor=pointer]:
+            - /url: https://www.webull.com/trading-investing/webull-advisors
+          - link "Learn" [ref=e213] [cursor=pointer]:
+            - /url: https://www.webull.com/learn
+        - generic [ref=e214]:
+          - heading "About Webull" [level=3] [ref=e215] [cursor=pointer]
+          - link "Investor Relations" [ref=e216] [cursor=pointer]:
+            - /url: https://www.webullcorp.com/investor-relations
+          - link "Careers" [ref=e217] [cursor=pointer]:
+            - /url: https://www.webull.com/careers
+          - link "BrokerCheck" [ref=e218] [cursor=pointer]:
+            - /url: https://brokercheck.finra.org/firm/summary/289063
+          - link "Pricing" [ref=e219] [cursor=pointer]:
+            - /url: https://www.webull.com/pricing
+          - link "Blog" [ref=e220] [cursor=pointer]:
+            - /url: https://www.webull.com/blog
+          - link "Script Editor" [ref=e221] [cursor=pointer]:
+            - /url: https://www.webull.com/help/faq/10782-Script-Editor
+        - generic [ref=e222]:
+          - heading "FAQs" [level=3] [ref=e223] [cursor=pointer]
+          - link "Account & Login" [ref=e224] [cursor=pointer]:
+            - /url: https://www.webull.com/help/category/42
+          - link "Retirement" [ref=e225] [cursor=pointer]:
+            - /url: https://www.webull.com/help/category/53
+          - link "Documents & Taxes" [ref=e226] [cursor=pointer]:
+            - /url: https://www.webull.com/help/category/51
+          - link "Privacy FAQs" [ref=e227] [cursor=pointer]:
+            - /url: https://www.webull.com/privacy
+        - generic [ref=e228]:
+          - heading "Terms & Conditions" [level=3] [ref=e229]
+          - link "Privacy Policy" [ref=e230] [cursor=pointer]:
+            - /url: https://www.webull.com/policy
+          - link "Business Continuity Plan" [ref=e231] [cursor=pointer]:
+            - /url: https://www.webull.com/policy?code=CONTINUITY01
+          - link "Disclosures" [ref=e232] [cursor=pointer]:
+            - /url: https://www.webull.com/policy
+          - link "Data Disclaimer" [ref=e233] [cursor=pointer]:
+            - /url: https://www.webull.com/policy?code=DATA_DISCLAIMER
+        - generic [ref=e234]:
+          - heading "Cookie" [level=3] [ref=e235]
+          - generic [ref=e236] [cursor=pointer]: Cookie Setting
+        - generic [ref=e237]:
+          - heading "Contact us" [level=3] [ref=e238]
+          - link "support@webull.com" [ref=e239] [cursor=pointer]:
+            - /url: mailto:support@webull.com
+          - link "+1 (888) 828-0618" [ref=e240] [cursor=pointer]:
+            - /url: tel:+1 (888) 828-0618
+          - generic [ref=e241]:
+            - heading "Follow us on" [level=3] [ref=e242]
+            - generic [ref=e243]:
+              - img [ref=e245] [cursor=pointer]
+              - img [ref=e248] [cursor=pointer]
+              - img [ref=e251] [cursor=pointer]
+              - img [ref=e254] [cursor=pointer]
+              - img [ref=e257] [cursor=pointer]
+      - generic [ref=e259]:
+        - link "Webull Platforms" [ref=e260] [cursor=pointer]:
+          - /url: https://www.webull.com/trading-platforms
+        - generic [ref=e261]:
+          - generic [ref=e262] [cursor=pointer]:
+            - img "苹果" [ref=e264]
+            - paragraph [ref=e271]: For Mac
+          - generic [ref=e272] [cursor=pointer]:
+            - img "微软" [ref=e274]
+            - paragraph [ref=e282]: For Windows
+          - generic [ref=e283] [cursor=pointer]:
+            - img "linux" [ref=e285]
+            - paragraph [ref=e293]: Linux(Ubuntu)
+          - generic [ref=e294] [cursor=pointer]:
+            - img "苹果" [ref=e296]
+            - paragraph [ref=e303]: App Store
+          - generic [ref=e304] [cursor=pointer]:
+            - img "谷歌" [ref=e306]
+            - paragraph [ref=e317]: Google Play
+      - generic [ref=e318]:
+        - paragraph [ref=e319]:
+          - text: Securities trading is offered to self-directed customers by Webull Financial LLC, a broker dealer registered with the Securities and Exchange Commission (SEC). Webull Financial LLC is a member of the Financial Industry Regulatory Authority (
+          - link "quick access to FINRA Broker Check" [ref=e320] [cursor=pointer]:
+            - /url: https://brokercheck.finra.org/firm/summary/289063
+            - text: FINRA
+          - text: ), Securities Investor Protection Corporation (
+          - link "quick access to SIPC broker list" [ref=e321] [cursor=pointer]:
+            - /url: https://www.sipc.org/list-of-members/?query=webull
+            - text: SIPC
+          - text: ), The New York Stock Exchange (
+          - link "quick access to NYSE membership introduction" [ref=e322] [cursor=pointer]:
+            - /url: https://www.nyse.com/markets/nyse/membership
+            - text: NYSE
+          - text: ),
+          - link "quick access to Nasdaq membership introduction" [ref=e323] [cursor=pointer]:
+            - /url: https://www.nasdaqtrader.com/Trader.aspx?id=Membership
+            - text: NASDAQ
+          - text: and Cboe EDGX Exchange, Inc (
+          - link "quick access to CBOE membership introduction" [ref=e324] [cursor=pointer]:
+            - /url: https://www.cboe.com/us/equities/membership/
+            - text: CBOE EDGX
+          - text: ).
+        - paragraph [ref=e325]:
+          - text: Webull Financial LLC is a CFTC registered Futures Commission Merchant with the Commodity Futures Trading Commission (CFTC) and a Member of the National Futures Association (
+          - link "NFA" [ref=e326] [cursor=pointer]:
+            - /url: https://www.nfa.futures.org/BasicNet/basic-profile.aspx?nfaid=s1SZsbNB0%2Bo%3D
+          - text: ). Futures and futures options trading involves substantial risk and is not suitable for all investors. Please read the Risk Disclosure Statement and other relevant Futures Disclosures located at
+          - link "www.webull.com/fcm-disclosures" [ref=e327] [cursor=pointer]:
+            - /url: https://www.webull.com/fcm-disclosures
+          - text: prior to trading futures products. Futures accounts are not protected by the Securities Investor Protection Corporation (SIPC).
+        - paragraph [ref=e328]: Advisory accounts and services are provided by Webull Advisors LLC (also known as "Webull Advisors"). Webull Advisors is an Investment Advisor registered with and regulated by the SEC under the Investment Advisors Act of 1940. Registration does not imply a level of skill or training. See additional information on the Disclosures webpage. Trades in your Webull Advisors account are executed by Webull Financial LLC.
+        - paragraph [ref=e329]:
+          - text: "Account Protection: SIPC and Excess SIPC Coverage Client securities accounts at Webull Financial LLC are protected by the Securities Investor Protection Corporation (\"SIPC\") for a maximum coverage of $500,000 (with a cash sublimit of $250,000). In addition, Webull offers clients Excess SIPC coverage based on the clearing arrangement: For securities accounts under the omnibus clearing relationship with Apex, Webull carries an excess SIPC policy with certain underwriters at Lloyd's of London, which extends per account coverage for securities and cash up to an aggregate of $100 million, subject to a maximum limit of $1,900,000 for any one customer’s cash. Securities positions are not subject to any per account sublimit. (ii) For securities accounts that are fully-disclosed to the clearing firm, Apex has purchased an additional insurance policy. The coverage limits provide protection for securities and cash up to an aggregate of $150 million, subject to maximum limits of $37.5 million for any one customer's securities and $900,000 for any one customer's cash. For the purpose of determining a Webull Financial LLC covered account, accounts with like names and titles are combined, but accounts with different titles are not (e.g. Individual/John Doe and IRA/John Doe). Futures and other assets held outside the securities account are not covered. SIPC and Excess SIPC Protections do not protect against a loss in the market value of securities. SIPC is a non-profit, membership corporation funded by broker-dealers that are members of SIPC. For more information about SIPC and answers to frequently asked questions please refer to the following websites: (i)"
+          - link "http://www.SIPC.org" [ref=e330] [cursor=pointer]:
+            - /url: http://www.SIPC.org
+          - text: (ii)
+          - link "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/investor-bulletin-sipc-protection-part-1-sipc-basics" [ref=e331] [cursor=pointer]:
+            - /url: https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/investor-bulletin-sipc-protection-part-1-sipc-basics
+        - paragraph [ref=e332]:
+          - text: Options trading entails significant risk and is not appropriate for all investors. Option investors can rapidly lose the value of their investment in a short period of time and incur permanent loss by expiration date. Losses can potentially exceed the initial required deposit. You need to complete an options trading application and get approval on eligible accounts. Please read the
+          - link "quick link to read Characteristics and Risks of Standardized Options agreement" [ref=e333] [cursor=pointer]:
+            - /url: https://www.theocc.com/getmedia/dd6200a7-5982-4226-90e4-1f2d32a89911/june_2024_riskstoc.pdf
+            - text: Characteristics and Risks of Standardized Options
+          - text: before trading options.
+        - paragraph [ref=e334]: All investments involve risk, and not all risks are suitable for every investor. The value of securities may fluctuate and as a result, clients may lose more than their original investment. The past performance of a security, or financial product does not guarantee future results or returns. Keep in mind that while diversification may help spread risk, it does not assure a profit or protect against loss in a down market. There is always the potential of losing money when you invest in securities or other financial products. Investors should consider their investment objectives and risks carefully before investing.
+        - paragraph [ref=e335]: Diversification does not eliminate the risk of experiencing investment losses. Margin trading increases risk of loss and includes the possibility of a forced sale if account equity drops below required levels. Margin is not available in all account types. Margin trading privileges are subject to Webull Financial, LLC review and approval. Leverage carries a high level of risk and is not suitable for all investors. Greater leverage creates greater losses in the event of adverse market movements.
+        - paragraph [ref=e336]: Investors should be aware that system response, execution price, speed, liquidity, market data, and account access times are affected by many factors, including market volatility, size and type of order, market conditions, system performance, and other factors. Market volatility, volume and system availability may delay account access and trade executions.
+        - paragraph [ref=e337]:
+          - text: Free trading of stocks, ETFs, and options refers to $0 commissions for Webull Financial LLC self-directed individual cash or margin brokerage accounts and IRAs that trade U.S. listed securities via mobile devices, desktop or website products. A $0.50 per contract fee applies for certain index options and a $0.10 per contract fee applies for oversized option orders. Relevant regulatory and exchange fees may apply. Please refer to our
+          - link "quick access to read our fee schedule details" [ref=e338] [cursor=pointer]:
+            - /url: https://www.webull.com/pricing#top
+            - text: Fee Schedule
+          - text: for more details.
+        - paragraph [ref=e339]: No content on the Webull Financial LLC website shall be considered as a recommendation or solicitation for the purchase or sale of securities, options, or other investment products. All information and data on the website is for reference only and no historical data shall be considered as the basis for judging future trends.
+      - generic [ref=e340]:
+        - text: © 2026 Webull Financial LLC, All rights reserved. Member
+        - link "quick access to FINRA Broker Check" [ref=e341] [cursor=pointer]:
+          - /url: https://brokercheck.finra.org/firm/summary/289063
+          - text: FINRA
+        - text: /
+        - link "quick access to SIPC broker list" [ref=e342] [cursor=pointer]:
+          - /url: https://www.sipc.org/list-of-members/?query=webull
+          - text: SIPC
+        - text: /
+        - link "quick access to NYSE membership introduction" [ref=e343] [cursor=pointer]:
+          - /url: https://www.nyse.com/markets/nyse/membership
+          - text: NYSE
+        - text: /
+        - link "quick access to Nasdaq membership introduction" [ref=e344] [cursor=pointer]:
+          - /url: https://www.nasdaqtrader.com/Trader.aspx?id=Membership
+          - text: NASDAQ
+        - text: /
+        - link "quick access to CBOE membership introduction" [ref=e345] [cursor=pointer]:
+          - /url: https://www.cboe.com/us/equities/membership/
+          - text: CBOE EDGX
+        - text: /
+        - link "NFA" [ref=e346] [cursor=pointer]:
+          - /url: https://www.nfa.futures.org/BasicNet/basic-profile.aspx?nfaid=s1SZsbNB0%2Bo%3D
+  - generic [ref=e347]:
+    - generic [ref=e348]: Choose your cookies
+    - generic [ref=e349]: Cookies help us to enhance your experience, and improve our website. Learn More and Manage
+    - generic [ref=e350]:
+      - generic [ref=e351] [cursor=pointer]: Reject non-essential cookies
+      - generic [ref=e352] [cursor=pointer]: Accept all

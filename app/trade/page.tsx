@@ -7,7 +7,6 @@ import TradeForm from '@/components/TradeForm'
 import TimeRangeTabs from '@/components/TimeRangeTabs'
 import type { SearchResult, QuoteResult, Holding, Portfolio, ChartPoint, CandlePoint, TimeRange } from '@/lib/types'
 
-// Dynamically import PriceChart to avoid SSR issues with lightweight-charts
 const PriceChart = dynamic(() => import('@/components/PriceChart'), { ssr: false })
 
 export default function TradePage() {
@@ -23,6 +22,7 @@ export default function TradePage() {
   const [chartRange, setChartRange] = useState<TimeRange>('1D')
   const [chartLoading, setChartLoading] = useState(false)
   const [chartMode, setChartMode] = useState<'line' | 'candle'>('line')
+  const [watchlist, setWatchlist] = useState<string[]>([])
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const chartCache = useRef<Record<string, ChartPoint[] | CandlePoint[]>>({})
 
@@ -34,6 +34,15 @@ export default function TradePage() {
   }, [])
 
   useEffect(() => { loadPortfolio() }, [loadPortfolio])
+
+  useEffect(() => {
+    fetch('/api/watchlist')
+      .then(r => r.json())
+      .then(data => {
+        if (data.items) setWatchlist((data.items as { symbol: string }[]).map(i => i.symbol))
+      })
+      .catch(() => {})
+  }, [])
 
   useEffect(() => {
     if (!query.trim()) { setResults([]); return }
@@ -76,6 +85,22 @@ export default function TradePage() {
       .finally(() => setChartLoading(false))
   }, [selected, chartRange, chartMode])
 
+  const handleWatchlistToggle = async () => {
+    if (!selected) return
+    const isWatched = watchlist.includes(selected.symbol)
+    if (isWatched) {
+      await fetch(`/api/watchlist?symbol=${encodeURIComponent(selected.symbol)}`, { method: 'DELETE' })
+      setWatchlist(prev => prev.filter(s => s !== selected.symbol))
+    } else {
+      await fetch('/api/watchlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ symbol: selected.symbol, name: selected.name, asset_type: selected.asset_type }),
+      })
+      setWatchlist(prev => [...prev, selected.symbol])
+    }
+  }
+
   const handleSelect = (result: SearchResult) => {
     setSelected(result)
     setQuery('')
@@ -91,12 +116,7 @@ export default function TradePage() {
     const res = await fetch('/api/trade', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        symbol: selected.symbol,
-        asset_type: selected.asset_type,
-        action,
-        quantity,
-      }),
+      body: JSON.stringify({ symbol: selected.symbol, asset_type: selected.asset_type, action, quantity }),
     })
     const data = await res.json()
     if (!res.ok) throw new Error(data.error ?? 'Trade failed')
@@ -121,7 +141,6 @@ export default function TradePage() {
         <p className="text-slate-500 mt-1">Search for a stock or forex pair to buy or sell</p>
       </div>
 
-      {/* Search bar */}
       <div className="relative mb-6">
         <div className="flex items-center rounded-2xl border border-slate-200 bg-white shadow-sm px-4">
           <svg className="w-5 h-5 text-slate-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -143,7 +162,6 @@ export default function TradePage() {
         )}
       </div>
 
-      {/* Trade success */}
       {tradeSuccess && (
         <div className="mb-6 rounded-xl bg-emerald-50 border border-emerald-200 px-5 py-4 text-sm font-medium text-emerald-700">
           ✓ Trade executed: {tradeSuccess}
@@ -153,7 +171,6 @@ export default function TradePage() {
       {selected ? (
         <div className="rounded-2xl bg-slate-900 p-6 shadow-2xl">
           <div className="flex gap-8">
-            {/* LEFT: Chart (60%) */}
             <div className="flex-[3] min-w-0">
               <div className="mb-4">
                 <div className="flex items-center gap-2 mb-1">
@@ -161,6 +178,13 @@ export default function TradePage() {
                   <span className="text-xs bg-slate-700 text-slate-400 px-2 py-0.5 rounded-full">
                     {selected.asset_type === 'forex' ? 'Forex' : 'Stock'}
                   </span>
+                  <button
+                    onClick={handleWatchlistToggle}
+                    className="text-lg leading-none transition-colors hover:text-yellow-400"
+                    title={watchlist.includes(selected.symbol) ? 'Remove from watchlist' : 'Add to watchlist'}
+                  >
+                    {watchlist.includes(selected.symbol) ? '★' : '☆'}
+                  </button>
                 </div>
                 <div className="text-slate-100 text-3xl font-bold">
                   {quote ? `$${quote.price.toFixed(2)}` : '—'}
@@ -206,7 +230,6 @@ export default function TradePage() {
               />
             </div>
 
-            {/* RIGHT: Buy/Sell form (40%) */}
             <div className="flex-[2] min-w-0">
               <TradeForm
                 selected={selected}

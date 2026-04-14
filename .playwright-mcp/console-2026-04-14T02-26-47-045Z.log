@@ -1,0 +1,17 @@
+[     921ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ https://emerging-locust-75.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js:11
+[    1394ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ https://paper-trade-six-gamma.vercel.app/api/portfolio:0
+[    1394ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ https://paper-trade-six-gamma.vercel.app/?_rsc=184h2:0
+[    1401ms] TypeError: Failed to fetch
+    at https://paper-trade-six-gamma.vercel.app/_next/static/chunks/0pecv-vs_ud90.js:1:5031
+    at https://paper-trade-six-gamma.vercel.app/_next/static/chunks/0pecv-vs_ud90.js:1:5127
+    at iv (https://paper-trade-six-gamma.vercel.app/_next/static/chunks/110q6k5sdl4es.js:1:95955)
+    at up (https://paper-trade-six-gamma.vercel.app/_next/static/chunks/110q6k5sdl4es.js:1:119994)
+    at ud (https://paper-trade-six-gamma.vercel.app/_next/static/chunks/110q6k5sdl4es.js:1:119656)
+    at up (https://paper-trade-six-gamma.vercel.app/_next/static/chunks/110q6k5sdl4es.js:1:119974)
+    at ud (https://paper-trade-six-gamma.vercel.app/_next/static/chunks/110q6k5sdl4es.js:1:119656)
+    at up (https://paper-trade-six-gamma.vercel.app/_next/static/chunks/110q6k5sdl4es.js:1:120039)
+    at ud (https://paper-trade-six-gamma.vercel.app/_next/static/chunks/110q6k5sdl4es.js:1:119656)
+    at up (https://paper-trade-six-gamma.vercel.app/_next/static/chunks/110q6k5sdl4es.js:1:120039)
+[    1397ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ https://paper-trade-six-gamma.vercel.app/history?_rsc=184h2:0
+[    1398ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ https://paper-trade-six-gamma.vercel.app/dashboard?_rsc=184h2:0
+[    1399ms] [ERROR] Failed to load resource: net::ERR_NETWORK_CHANGED @ https://paper-trade-six-gamma.vercel.app/trade?_rsc=6e1c1:0

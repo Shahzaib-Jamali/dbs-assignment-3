@@ -1,0 +1,32 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "PaperTrade" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e5]: PaperTrade
+  - main [ref=e6]:
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - heading "Portfolio" [level=1] [ref=e9]
+        - paragraph [ref=e10]: Your paper trading account overview
+      - link "+ New Trade" [ref=e11] [cursor=pointer]:
+        - /url: /trade
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - paragraph [ref=e14]: Cash Balance
+        - paragraph [ref=e15]: $48,704.00
+        - paragraph [ref=e16]: Available to trade
+      - generic [ref=e17]:
+        - paragraph [ref=e18]: Portfolio Value
+        - paragraph [ref=e19]: $48,704.00
+        - paragraph [ref=e20]: Cash + holdings
+      - generic [ref=e21]:
+        - paragraph [ref=e22]: Total P&L
+        - paragraph [ref=e23]: "-$1,296.00"
+        - paragraph [ref=e24]: "-2.59% vs starting balance"
+    - heading "Current Holdings" [level=2] [ref=e25]
+    - generic [ref=e26]:
+      - text: No holdings yet. Head to the
+      - link "Trade page" [ref=e27] [cursor=pointer]:
+        - /url: /trade
+      - text: to buy your first asset.
+  - alert [ref=e28]

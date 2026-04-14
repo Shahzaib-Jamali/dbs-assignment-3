@@ -1,0 +1,45 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "PaperTrade" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e5]: PaperTrade
+  - main [ref=e6]:
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - heading "Portfolio" [level=1] [ref=e9]
+        - paragraph [ref=e10]: Your paper trading account overview
+      - link "+ New Trade" [ref=e11] [cursor=pointer]:
+        - /url: /trade
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - paragraph [ref=e14]: Cash Balance
+        - paragraph [ref=e15]: $48,185.60
+        - paragraph [ref=e16]: Available to trade
+      - generic [ref=e17]:
+        - paragraph [ref=e18]: Portfolio Value
+        - paragraph [ref=e19]: $48,704.00
+        - paragraph [ref=e20]: Cash + holdings
+      - generic [ref=e21]:
+        - paragraph [ref=e22]: Total P&L
+        - paragraph [ref=e23]: "-$1,296.00"
+        - paragraph [ref=e24]: "-2.59% vs starting balance"
+    - heading "Current Holdings" [level=2] [ref=e25]
+    - table [ref=e27]:
+      - rowgroup [ref=e28]:
+        - row "Symbol Type Qty Avg Buy Current Unrealized P&L" [ref=e29]:
+          - columnheader "Symbol" [ref=e30]
+          - columnheader "Type" [ref=e31]
+          - columnheader "Qty" [ref=e32]
+          - columnheader "Avg Buy" [ref=e33]
+          - columnheader "Current" [ref=e34]
+          - columnheader "Unrealized P&L" [ref=e35]
+      - rowgroup [ref=e36]:
+        - row "AAPL stock 2.0000 $259.2000 $259.2000 +$0.00" [ref=e37]:
+          - cell "AAPL" [ref=e38]
+          - cell "stock" [ref=e39]:
+            - generic [ref=e40]: stock
+          - cell "2.0000" [ref=e41]
+          - cell "$259.2000" [ref=e42]
+          - cell "$259.2000" [ref=e43]
+          - cell "+$0.00" [ref=e44]
+  - alert [ref=e45]
