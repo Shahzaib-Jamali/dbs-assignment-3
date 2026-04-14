@@ -1,4 +1,4 @@
-import type { ChartPoint, TimeRange } from './types'
+import type { ChartPoint, CandlePoint, TimeRange } from './types'
 
 const AV_BASE = 'https://www.alphavantage.co/query'
 const API_KEY = process.env.ALPHA_VANTAGE_API_KEY!
@@ -96,6 +96,50 @@ export async function getForexSeries(from: string, to: string, range: TimeRange)
   const series = data[seriesKey] as Record<string, Record<string, string>>
   const points: ChartPoint[] = Object.entries(series)
     .map(([time, values]) => ({ time, price: parseFloat(values['4. close']) }))
+    .sort((a, b) => a.time.localeCompare(b.time))
+  return points.slice(-pointLimit(range))
+}
+
+export async function getStockCandleSeries(symbol: string, range: TimeRange): Promise<CandlePoint[]> {
+  const { fn, interval } = stockSeriesParams(range)
+  const intervalParam = interval ? `&interval=${interval}` : ''
+  const outputSize = (range === '1D' || range === '1W') ? 'compact' : 'full'
+  const url = `${AV_BASE}?function=${fn}&symbol=${symbol}${intervalParam}&outputsize=${outputSize}&apikey=${API_KEY}`
+  const res = await fetch(url, { next: { revalidate: 0 } })
+  const data = await res.json()
+  const seriesKey = Object.keys(data).find(k => k.startsWith('Time Series'))
+  if (!seriesKey) return []
+  const series = data[seriesKey] as Record<string, Record<string, string>>
+  const points: CandlePoint[] = Object.entries(series)
+    .map(([time, v]) => ({
+      time,
+      open:  parseFloat(v['1. open']),
+      high:  parseFloat(v['2. high']),
+      low:   parseFloat(v['3. low']),
+      close: parseFloat(v['4. close']),
+    }))
+    .sort((a, b) => a.time.localeCompare(b.time))
+  return points.slice(-pointLimit(range))
+}
+
+export async function getForexCandleSeries(from: string, to: string, range: TimeRange): Promise<CandlePoint[]> {
+  const { fn, interval } = forexSeriesParams(range)
+  const intervalParam = interval ? `&interval=${interval}` : ''
+  const outputSize = (range === '1D' || range === '1W') ? 'compact' : 'full'
+  const url = `${AV_BASE}?function=${fn}&from_symbol=${from}&to_symbol=${to}${intervalParam}&outputsize=${outputSize}&apikey=${API_KEY}`
+  const res = await fetch(url, { next: { revalidate: 0 } })
+  const data = await res.json()
+  const seriesKey = Object.keys(data).find(k => k.startsWith('Time Series'))
+  if (!seriesKey) return []
+  const series = data[seriesKey] as Record<string, Record<string, string>>
+  const points: CandlePoint[] = Object.entries(series)
+    .map(([time, v]) => ({
+      time,
+      open:  parseFloat(v['1. open']),
+      high:  parseFloat(v['2. high']),
+      low:   parseFloat(v['3. low']),
+      close: parseFloat(v['4. close']),
+    }))
     .sort((a, b) => a.time.localeCompare(b.time))
   return points.slice(-pointLimit(range))
 }
