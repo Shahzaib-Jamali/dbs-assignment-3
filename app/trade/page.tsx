@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import SearchResults from '@/components/SearchResults'
 import TradeForm from '@/components/TradeForm'
 import TimeRangeTabs from '@/components/TimeRangeTabs'
-import type { SearchResult, QuoteResult, Holding, Portfolio, ChartPoint, TimeRange } from '@/lib/types'
+import type { SearchResult, QuoteResult, Holding, Portfolio, ChartPoint, CandlePoint, TimeRange } from '@/lib/types'
 
 // Dynamically import PriceChart to avoid SSR issues with lightweight-charts
 const PriceChart = dynamic(() => import('@/components/PriceChart'), { ssr: false })
@@ -19,11 +19,12 @@ export default function TradePage() {
   const [holdings, setHoldings] = useState<Holding[]>([])
   const [searchLoading, setSearchLoading] = useState(false)
   const [tradeSuccess, setTradeSuccess] = useState<string | null>(null)
-  const [chartPoints, setChartPoints] = useState<ChartPoint[]>([])
+  const [chartPoints, setChartPoints] = useState<ChartPoint[] | CandlePoint[]>([])
   const [chartRange, setChartRange] = useState<TimeRange>('1D')
   const [chartLoading, setChartLoading] = useState(false)
+  const [chartMode, setChartMode] = useState<'line' | 'candle'>('line')
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const chartCache = useRef<Record<string, ChartPoint[]>>({})
+  const chartCache = useRef<Record<string, ChartPoint[] | CandlePoint[]>>({})
 
   const loadPortfolio = useCallback(async () => {
     const res = await fetch('/api/portfolio')
@@ -58,13 +59,13 @@ export default function TradePage() {
 
   useEffect(() => {
     if (!selected) { setChartPoints([]); return }
-    const cacheKey = `${selected.symbol}-${chartRange}`
+    const cacheKey = `${selected.symbol}-${chartRange}-${chartMode}`
     if (chartCache.current[cacheKey]) {
       setChartPoints(chartCache.current[cacheKey])
       return
     }
     setChartLoading(true)
-    fetch(`/api/chart?symbol=${encodeURIComponent(selected.symbol)}&type=${selected.asset_type}&range=${chartRange}`)
+    fetch(`/api/chart?symbol=${encodeURIComponent(selected.symbol)}&type=${selected.asset_type}&range=${chartRange}&mode=${chartMode}`)
       .then(r => r.json())
       .then(data => {
         const points = data.points ?? []
@@ -73,7 +74,7 @@ export default function TradePage() {
       })
       .catch(() => setChartPoints([]))
       .finally(() => setChartLoading(false))
-  }, [selected, chartRange])
+  }, [selected, chartRange, chartMode])
 
   const handleSelect = (result: SearchResult) => {
     setSelected(result)
@@ -82,6 +83,7 @@ export default function TradePage() {
     setTradeSuccess(null)
     setChartRange('1D')
     setChartPoints([])
+    setChartMode('line')
   }
 
   const handleTrade = async (action: 'BUY' | 'SELL', quantity: number) => {
@@ -105,7 +107,9 @@ export default function TradePage() {
   const userHolding = holdings.find(h => h.symbol === selected?.symbol) ?? null
 
   const isUp = chartPoints.length >= 2
-    ? chartPoints[chartPoints.length - 1].price >= chartPoints[0].price
+    ? chartMode === 'candle'
+      ? (chartPoints[chartPoints.length - 1] as CandlePoint).close >= (chartPoints[0] as CandlePoint).close
+      : (chartPoints[chartPoints.length - 1] as ChartPoint).price >= (chartPoints[0] as ChartPoint).price
     : true
 
   const priceChangeColor = isUp ? 'text-teal-400' : 'text-red-400'
@@ -164,9 +168,16 @@ export default function TradePage() {
                 {chartPoints.length >= 2 && (
                   <div className={`text-sm mt-1 ${priceChangeColor}`}>
                     {isUp ? '▲' : '▼'}{' '}
-                    {Math.abs(
-                      ((chartPoints[chartPoints.length - 1].price - chartPoints[0].price) / chartPoints[0].price) * 100
-                    ).toFixed(2)}% this period
+                    {(() => {
+                      if (chartMode === 'candle') {
+                        const first = (chartPoints[0] as CandlePoint).close
+                        const last  = (chartPoints[chartPoints.length - 1] as CandlePoint).close
+                        return Math.abs(((last - first) / first) * 100).toFixed(2)
+                      }
+                      const first = (chartPoints[0] as ChartPoint).price
+                      const last  = (chartPoints[chartPoints.length - 1] as ChartPoint).price
+                      return Math.abs(((last - first) / first) * 100).toFixed(2)
+                    })()}% this period
                   </div>
                 )}
               </div>
@@ -183,11 +194,16 @@ export default function TradePage() {
                   </div>
                 )}
                 {!chartLoading && chartPoints.length > 0 && (
-                  <PriceChart points={chartPoints} isUp={isUp} />
+                  <PriceChart points={chartPoints} isUp={isUp} mode={chartMode} />
                 )}
               </div>
 
-              <TimeRangeTabs active={chartRange} onChange={setChartRange} />
+              <TimeRangeTabs
+                active={chartRange}
+                onChange={setChartRange}
+                mode={chartMode}
+                onModeChange={setChartMode}
+              />
             </div>
 
             {/* RIGHT: Buy/Sell form (40%) */}
