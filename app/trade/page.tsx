@@ -1,9 +1,14 @@
 'use client'
 
 import { useState, useEffect, useRef, useCallback } from 'react'
+import dynamic from 'next/dynamic'
 import SearchResults from '@/components/SearchResults'
 import TradeForm from '@/components/TradeForm'
-import type { SearchResult, QuoteResult, Holding, Portfolio } from '@/lib/types'
+import TimeRangeTabs from '@/components/TimeRangeTabs'
+import type { SearchResult, QuoteResult, Holding, Portfolio, ChartPoint, TimeRange } from '@/lib/types'
+
+// Dynamically import PriceChart to avoid SSR issues with lightweight-charts
+const PriceChart = dynamic(() => import('@/components/PriceChart'), { ssr: false })
 
 export default function TradePage() {
   const [query, setQuery] = useState('')
@@ -14,9 +19,12 @@ export default function TradePage() {
   const [holdings, setHoldings] = useState<Holding[]>([])
   const [searchLoading, setSearchLoading] = useState(false)
   const [tradeSuccess, setTradeSuccess] = useState<string | null>(null)
+  const [chartPoints, setChartPoints] = useState<ChartPoint[]>([])
+  const [chartRange, setChartRange] = useState<TimeRange>('1D')
+  const [chartLoading, setChartLoading] = useState(false)
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const chartCache = useRef<Record<string, ChartPoint[]>>({})
 
-  // Load portfolio on mount
   const loadPortfolio = useCallback(async () => {
     const res = await fetch('/api/portfolio')
     const data = await res.json()
@@ -26,7 +34,6 @@ export default function TradePage() {
 
   useEffect(() => { loadPortfolio() }, [loadPortfolio])
 
-  // Debounced search
   useEffect(() => {
     if (!query.trim()) { setResults([]); return }
     if (debounceRef.current) clearTimeout(debounceRef.current)
@@ -41,7 +48,6 @@ export default function TradePage() {
     }, 400)
   }, [query])
 
-  // Fetch quote when asset selected
   useEffect(() => {
     if (!selected) { setQuote(null); return }
     setQuote(null)
@@ -50,11 +56,32 @@ export default function TradePage() {
       .then(data => { if (!data.error) setQuote(data) })
   }, [selected])
 
+  useEffect(() => {
+    if (!selected) { setChartPoints([]); return }
+    const cacheKey = `${selected.symbol}-${chartRange}`
+    if (chartCache.current[cacheKey]) {
+      setChartPoints(chartCache.current[cacheKey])
+      return
+    }
+    setChartLoading(true)
+    fetch(`/api/chart?symbol=${encodeURIComponent(selected.symbol)}&type=${selected.asset_type}&range=${chartRange}`)
+      .then(r => r.json())
+      .then(data => {
+        const points = data.points ?? []
+        chartCache.current[cacheKey] = points
+        setChartPoints(points)
+      })
+      .catch(() => setChartPoints([]))
+      .finally(() => setChartLoading(false))
+  }, [selected, chartRange])
+
   const handleSelect = (result: SearchResult) => {
     setSelected(result)
     setQuery('')
     setResults([])
     setTradeSuccess(null)
+    setChartRange('1D')
+    setChartPoints([])
   }
 
   const handleTrade = async (action: 'BUY' | 'SELL', quantity: number) => {
@@ -77,15 +104,21 @@ export default function TradePage() {
 
   const userHolding = holdings.find(h => h.symbol === selected?.symbol) ?? null
 
+  const isUp = chartPoints.length >= 2
+    ? chartPoints[chartPoints.length - 1].price >= chartPoints[0].price
+    : true
+
+  const priceChangeColor = isUp ? 'text-teal-400' : 'text-red-400'
+
   return (
-    <main className="mx-auto max-w-4xl px-6 py-10">
+    <main className="mx-auto max-w-6xl px-6 py-10">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-slate-900">Trade</h1>
         <p className="text-slate-500 mt-1">Search for a stock or forex pair to buy or sell</p>
       </div>
 
       {/* Search bar */}
-      <div className="relative mb-8">
+      <div className="relative mb-6">
         <div className="flex items-center rounded-2xl border border-slate-200 bg-white shadow-sm px-4">
           <svg className="w-5 h-5 text-slate-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -113,15 +146,63 @@ export default function TradePage() {
         </div>
       )}
 
-      {/* Trade form */}
       {selected ? (
-        <TradeForm
-          selected={selected}
-          quote={quote}
-          userHolding={userHolding}
-          cashBalance={portfolio?.cash_balance ?? 0}
-          onTrade={handleTrade}
-        />
+        <div className="rounded-2xl bg-slate-900 p-6 shadow-2xl">
+          <div className="flex gap-8">
+            {/* LEFT: Chart (60%) */}
+            <div className="flex-[3] min-w-0">
+              <div className="mb-4">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-slate-400 text-sm">{selected.name}</span>
+                  <span className="text-xs bg-slate-700 text-slate-400 px-2 py-0.5 rounded-full">
+                    {selected.asset_type === 'forex' ? 'Forex' : 'Stock'}
+                  </span>
+                </div>
+                <div className="text-slate-100 text-3xl font-bold">
+                  {quote ? `$${quote.price.toFixed(2)}` : '—'}
+                </div>
+                {chartPoints.length >= 2 && (
+                  <div className={`text-sm mt-1 ${priceChangeColor}`}>
+                    {isUp ? '▲' : '▼'}{' '}
+                    {Math.abs(
+                      ((chartPoints[chartPoints.length - 1].price - chartPoints[0].price) / chartPoints[0].price) * 100
+                    ).toFixed(2)}% this period
+                  </div>
+                )}
+              </div>
+
+              <div className="relative min-h-[220px]">
+                {chartLoading && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-6 h-6 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" />
+                  </div>
+                )}
+                {!chartLoading && chartPoints.length === 0 && (
+                  <div className="absolute inset-0 flex items-center justify-center text-slate-600 text-sm">
+                    Chart unavailable
+                  </div>
+                )}
+                {!chartLoading && chartPoints.length > 0 && (
+                  <PriceChart points={chartPoints} isUp={isUp} />
+                )}
+              </div>
+
+              <TimeRangeTabs active={chartRange} onChange={setChartRange} />
+            </div>
+
+            {/* RIGHT: Buy/Sell form (40%) */}
+            <div className="flex-[2] min-w-0">
+              <TradeForm
+                selected={selected}
+                quote={quote}
+                userHolding={userHolding}
+                cashBalance={portfolio?.cash_balance ?? 0}
+                onTrade={handleTrade}
+                dark
+              />
+            </div>
+          </div>
+        </div>
       ) : (
         <div className="rounded-2xl border border-dashed border-slate-200 bg-white p-16 text-center text-slate-400">
           <p className="text-lg font-medium">Search for an asset above to start trading</p>
