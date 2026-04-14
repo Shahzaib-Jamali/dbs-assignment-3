@@ -9,10 +9,11 @@ export interface Holding {
   id: string
   clerk_user_id: string
   symbol: string
+  name: string
   asset_type: 'stock' | 'forex'
   quantity: number
-  avg_buy_price: number
-  updated_at: string
+  avg_cost: number
+  created_at: string
   // Enriched client-side:
   current_price?: number
   unrealized_pnl?: number
@@ -22,11 +23,12 @@ export interface Trade {
   id: string
   clerk_user_id: string
   symbol: string
+  name: string
   asset_type: 'stock' | 'forex'
-  action: 'BUY' | 'SELL'
+  trade_type: 'BUY' | 'SELL'
   quantity: number
-  price_at_trade: number
-  total_value: number
+  price: number
+  total: number
   created_at: string
 }
 

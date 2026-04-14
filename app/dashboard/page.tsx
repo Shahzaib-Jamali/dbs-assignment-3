@@ -54,7 +54,7 @@ export default async function DashboardPage() {
       } catch { /* ignore price fetch errors */ }
 
       const unrealizedPnl = currentPrice != null
-        ? (currentPrice - h.avg_buy_price) * h.quantity
+        ? (currentPrice - h.avg_cost) * h.quantity
         : null
 
       return {

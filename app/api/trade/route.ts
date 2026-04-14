@@ -66,10 +66,10 @@ export async function POST(req: NextRequest) {
 
     if (existing && existing.quantity > 0) {
       const newQty = existing.quantity + quantity
-      const newAvg = ((existing.avg_buy_price * existing.quantity) + (price * quantity)) / newQty
+      const newAvg = ((existing.avg_cost * existing.quantity) + (price * quantity)) / newQty
       await supabase
         .from('holdings')
-        .update({ quantity: newQty, avg_buy_price: newAvg, updated_at: new Date().toISOString() })
+        .update({ quantity: newQty, avg_cost: newAvg })
         .eq('clerk_user_id', userId)
         .eq('symbol', symbol)
     } else {
@@ -78,10 +78,10 @@ export async function POST(req: NextRequest) {
         .upsert({
           clerk_user_id: userId,
           symbol,
+          name: symbol,
           asset_type,
           quantity,
-          avg_buy_price: price,
-          updated_at: new Date().toISOString(),
+          avg_cost: price,
         }, { onConflict: 'clerk_user_id,symbol' })
     }
   }
@@ -117,7 +117,7 @@ export async function POST(req: NextRequest) {
     } else {
       await supabase
         .from('holdings')
-        .update({ quantity: newQty, updated_at: new Date().toISOString() })
+        .update({ quantity: newQty })
         .eq('clerk_user_id', userId)
         .eq('symbol', symbol)
     }
@@ -129,11 +129,12 @@ export async function POST(req: NextRequest) {
     .insert({
       clerk_user_id: userId,
       symbol,
+      name: symbol,
       asset_type,
-      action,
+      trade_type: action,
       quantity,
-      price_at_trade: price,
-      total_value,
+      price,
+      total: total_value,
     })
 
   if (tradeErr) return NextResponse.json({ error: tradeErr.message }, { status: 500 })

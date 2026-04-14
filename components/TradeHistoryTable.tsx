@@ -49,17 +49,17 @@ export default function TradeHistoryTable({ trades }: TradeHistoryTableProps) {
               </td>
               <td className="px-6 py-4">
                 <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-bold ${
-                  t.action === 'BUY'
+                  t.trade_type === 'BUY'
                     ? 'bg-emerald-50 text-emerald-700'
                     : 'bg-red-50 text-red-600'
                 }`}>
-                  {t.action}
+                  {t.trade_type}
                 </span>
               </td>
               <td className="px-6 py-4 text-right text-slate-700">{Number(t.quantity).toFixed(4)}</td>
-              <td className="px-6 py-4 text-right text-slate-700">${Number(t.price_at_trade).toFixed(4)}</td>
+              <td className="px-6 py-4 text-right text-slate-700">${Number(t.price).toFixed(4)}</td>
               <td className="px-6 py-4 text-right font-semibold text-slate-900">
-                ${Number(t.total_value).toFixed(2)}
+                ${Number(t.total).toFixed(2)}
               </td>
             </tr>
           ))}

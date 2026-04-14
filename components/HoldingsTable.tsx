@@ -31,7 +31,7 @@ export default function HoldingsTable({ holdings }: HoldingsTableProps) {
         <tbody className="divide-y divide-slate-100">
           {holdings.map(h => {
             const pnl = h.current_price != null
-              ? (h.current_price - h.avg_buy_price) * h.quantity
+              ? (h.current_price - h.avg_cost) * h.quantity
               : null
             const isPositive = pnl != null && pnl >= 0
 
@@ -48,7 +48,7 @@ export default function HoldingsTable({ holdings }: HoldingsTableProps) {
                   </span>
                 </td>
                 <td className="px-6 py-4 text-right text-slate-700">{Number(h.quantity).toFixed(4)}</td>
-                <td className="px-6 py-4 text-right text-slate-700">${Number(h.avg_buy_price).toFixed(4)}</td>
+                <td className="px-6 py-4 text-right text-slate-700">${Number(h.avg_cost).toFixed(4)}</td>
                 <td className="px-6 py-4 text-right text-slate-700">
                   {h.current_price != null ? `$${h.current_price.toFixed(4)}` : '—'}
                 </td>
