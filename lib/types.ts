@@ -43,3 +43,10 @@ export interface QuoteResult {
   price: number
   asset_type: 'stock' | 'forex'
 }
+
+export interface ChartPoint {
+  time: string  // ISO date string e.g. "2024-04-08" or "2024-04-08 14:30:00"
+  price: number
+}
+
+export type TimeRange = '1D' | '1W' | '1M' | '3M' | '1Y' | 'MAX'
