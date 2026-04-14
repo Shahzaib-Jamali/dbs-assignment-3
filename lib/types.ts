@@ -51,4 +51,12 @@ export interface ChartPoint {
   price: number
 }
 
+export interface CandlePoint {
+  time: string
+  open: number
+  high: number
+  low: number
+  close: number
+}
+
 export type TimeRange = '1D' | '1W' | '1M' | '3M' | '1Y' | 'MAX'
