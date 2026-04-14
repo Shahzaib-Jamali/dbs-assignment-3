@@ -1,15 +1,16 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { createChart, ColorType, LineStyle, LineSeries } from 'lightweight-charts'
-import type { ChartPoint } from '@/lib/types'
+import { createChart, ColorType, LineStyle, LineSeries, CandlestickSeries } from 'lightweight-charts'
+import type { ChartPoint, CandlePoint } from '@/lib/types'
 
 interface Props {
-  points: ChartPoint[]
+  points: ChartPoint[] | CandlePoint[]
   isUp: boolean
+  mode: 'line' | 'candle'
 }
 
-export default function PriceChart({ points, isUp }: Props) {
+export default function PriceChart({ points, isUp, mode }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -38,9 +39,7 @@ export default function PriceChart({ points, isUp }: Props) {
           labelBackgroundColor: '#0d9488',
         },
       },
-      rightPriceScale: {
-        borderColor: '#1e293b',
-      },
+      rightPriceScale: { borderColor: '#1e293b' },
       timeScale: {
         borderColor: '#1e293b',
         timeVisible: true,
@@ -50,25 +49,43 @@ export default function PriceChart({ points, isUp }: Props) {
       height: 220,
     })
 
-    const lineColor = isUp ? '#14b8a6' : '#f87171'
-
-    const lineSeries = chart.addSeries(LineSeries, {
-      color: lineColor,
-      lineWidth: 2,
-      crosshairMarkerVisible: true,
-      crosshairMarkerRadius: 4,
-      crosshairMarkerBorderColor: '#0f172a',
-      crosshairMarkerBackgroundColor: lineColor,
-      lastValueVisible: false,
-      priceLineVisible: true,
-      priceLineColor: '#334155',
-      priceLineStyle: LineStyle.Dashed,
-      priceLineWidth: 1,
-    })
-
-    lineSeries.setData(
-      points.map(p => ({ time: p.time as any, value: p.price }))
-    )
+    if (mode === 'candle') {
+      const series = chart.addSeries(CandlestickSeries, {
+        upColor:         '#10b981',
+        downColor:       '#ef4444',
+        borderUpColor:   '#10b981',
+        borderDownColor: '#ef4444',
+        wickUpColor:     '#10b981',
+        wickDownColor:   '#ef4444',
+      })
+      series.setData(
+        (points as CandlePoint[]).map(p => ({
+          time:  p.time as any,
+          open:  p.open,
+          high:  p.high,
+          low:   p.low,
+          close: p.close,
+        }))
+      )
+    } else {
+      const lineColor = isUp ? '#14b8a6' : '#f87171'
+      const series = chart.addSeries(LineSeries, {
+        color: lineColor,
+        lineWidth: 2,
+        crosshairMarkerVisible: true,
+        crosshairMarkerRadius: 4,
+        crosshairMarkerBorderColor: '#0f172a',
+        crosshairMarkerBackgroundColor: lineColor,
+        lastValueVisible: false,
+        priceLineVisible: true,
+        priceLineColor: '#334155',
+        priceLineStyle: LineStyle.Dashed,
+        priceLineWidth: 1,
+      })
+      series.setData(
+        (points as ChartPoint[]).map(p => ({ time: p.time as any, value: p.price }))
+      )
+    }
 
     chart.timeScale().fitContent()
 
@@ -83,7 +100,7 @@ export default function PriceChart({ points, isUp }: Props) {
       window.removeEventListener('resize', handleResize)
       chart.remove()
     }
-  }, [points, isUp])
+  }, [points, isUp, mode])
 
   return <div ref={containerRef} className="w-full" />
 }
