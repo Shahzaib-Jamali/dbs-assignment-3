@@ -1,65 +1,125 @@
-import Image from "next/image";
+import Link from 'next/link'
+import { SignedIn, SignedOut } from '@clerk/nextjs'
 
-export default function Home() {
+const features = [
+  {
+    icon: '📈',
+    title: 'Real Market Prices',
+    description: 'Live stock and forex quotes powered by Alpha Vantage — no fake data.',
+  },
+  {
+    icon: '💰',
+    title: '$50K Starting Balance',
+    description: 'Every account starts with $50,000 in virtual cash to practice with.',
+  },
+  {
+    icon: '📊',
+    title: 'Track Your P&L',
+    description: 'Monitor unrealized gains and losses across your full portfolio in real time.',
+  },
+]
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-teal-50 via-white to-slate-50 py-24">
+        <div className="mx-auto max-w-4xl px-6 text-center">
+          <span className="inline-block rounded-full bg-teal-100 px-4 py-1 text-sm font-semibold text-teal-700 mb-6">
+            Paper Trading · Zero Risk
+          </span>
+          <h1 className="text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl mb-6">
+            Trade stocks &amp; forex
+            <span className="text-teal-600"> without the risk</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mx-auto max-w-2xl text-xl text-slate-600 mb-10">
+            Practice investing with $50,000 in virtual cash. Search real assets, execute simulated trades,
+            and track your portfolio — no money on the line.
           </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <SignedOut>
+              <Link
+                href="/sign-up"
+                className="rounded-xl bg-teal-600 px-8 py-4 text-lg font-semibold text-white shadow-lg hover:bg-teal-700 transition-all hover:shadow-teal-200 hover:shadow-xl"
+              >
+                Start Trading Free
+              </Link>
+              <Link
+                href="/sign-in"
+                className="rounded-xl border border-slate-200 bg-white px-8 py-4 text-lg font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+              >
+                Log In
+              </Link>
+            </SignedOut>
+            <SignedIn>
+              <Link
+                href="/dashboard"
+                className="rounded-xl bg-teal-600 px-8 py-4 text-lg font-semibold text-white shadow-lg hover:bg-teal-700 transition-all"
+              >
+                Go to Dashboard
+              </Link>
+              <Link
+                href="/trade"
+                className="rounded-xl border border-slate-200 bg-white px-8 py-4 text-lg font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+              >
+                Start Trading
+              </Link>
+            </SignedIn>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Features */}
+      <section className="py-20 bg-white">
+        <div className="mx-auto max-w-6xl px-6">
+          <h2 className="text-center text-3xl font-bold text-slate-900 mb-4">
+            Everything you need to practice
+          </h2>
+          <p className="text-center text-slate-500 mb-14 max-w-xl mx-auto">
+            Build trading skills and test strategies with real market data — completely risk-free.
+          </p>
+          <div className="grid gap-8 sm:grid-cols-3">
+            {features.map(f => (
+              <div
+                key={f.title}
+                className="rounded-2xl border border-slate-100 bg-slate-50 p-8 shadow-sm hover:shadow-md hover:border-teal-100 transition-all"
+              >
+                <div className="text-4xl mb-4">{f.icon}</div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">{f.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">{f.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
-    </div>
-  );
+      </section>
+
+      {/* CTA Banner */}
+      <section className="py-20 bg-gradient-to-r from-teal-600 to-teal-700">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Ready to start practicing?
+          </h2>
+          <p className="text-teal-100 mb-8 text-lg">
+            Create a free account and get $50,000 in virtual cash instantly.
+          </p>
+          <SignedOut>
+            <Link
+              href="/sign-up"
+              className="inline-block rounded-xl bg-white px-8 py-4 text-lg font-semibold text-teal-700 hover:bg-teal-50 transition-colors shadow-lg"
+            >
+              Create Free Account
+            </Link>
+          </SignedOut>
+          <SignedIn>
+            <Link
+              href="/trade"
+              className="inline-block rounded-xl bg-white px-8 py-4 text-lg font-semibold text-teal-700 hover:bg-teal-50 transition-colors shadow-lg"
+            >
+              Make Your First Trade
+            </Link>
+          </SignedIn>
+        </div>
+      </section>
+    </main>
+  )
 }
